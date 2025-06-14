@@ -1,0 +1,32 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificador de Sites</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; max-width: 800px; margin: auto; }
+    .seguro { color: green; }
+    .perigoso { color: red; }
+    .risco { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Verificador de Sites Suspeitos</h1>
+  <form method="post">
+    <input type="text" name="url" placeholder="Digite a URL para verificar" style="width: 70%;">
+    <button type="submit">Verificar</button>
+  </form>
+
+  {% if resultado %}
+    <h2>Resultado para {{ resultado.url }}</h2>
+    <p><strong>HTTPS:</strong> {% if resultado.https_ok %}<span class="seguro">Válido</span>{% else %}<span class="perigoso">Inválido</span>{% endif %}</p>
+    <p><strong>Expiração do Certificado:</strong> {{ resultado.https_info }}</p>
+    <p><strong>Data de criação do domínio:</strong> {{ resultado.criacao }}</p>
+    <p><strong>Domínio novo:</strong> {{ 'Sim' if resultado.dominio_novo else 'Não' }}</p>
+    <p><strong>Presente em blacklist:</strong> {{ 'Sim' if resultado.blacklistado else 'Não' }}</p>
+    <p><strong>Similar a domínio legítimo:</strong> {{ 'Sim' if resultado.similar else 'Não' }}</p>
+    <p class="risco"><strong>Score de Confiança:</strong> {{ resultado.score }}/100</p>
+  {% endif %}
+</body>
+</html>
