@@ -1,4 +1,4 @@
-# verificador_sites.py (com Flask, Score e integração com APIs externas)
+# verificador_sites.py criado por Guilherme Vieira :D
 
 import requests
 import whois
@@ -11,8 +11,8 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 SAFE_DOMAINS = ['correios.com.br', 'www.correios.com.br']
-GOOGLE_API_KEY = 'SUA_CHAVE_AQUI'  # Insira sua chave da Google Safe Browsing API
-PHISHTANK_API_KEY = 'SUA_CHAVE_AQUI'  # (opcional, dependendo da API usada)
+GOOGLE_API_KEY = 'SUA_CHAVE_AQUI'  # Aqui você coloca a sua chave do Google Safe Browsing API
+PHISHTANK_API_KEY = 'SUA_CHAVE_AQUI'  # (Isso é opcional, vai depender muito da API que vocẽ está utilizando)
 
 
 def verificar_https(url):
