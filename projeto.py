@@ -40,7 +40,7 @@ def verificar_dominio_whois(dominio):
 
 def verificar_google_safe_browsing(url):
     try:
-        endpoint = f"https://safebrowsing.googleapis.com/v4/threatMatches:find?key={AIzaSyAhKRdo9btv11tpL6P7hZSARl--mQh9kOQ}"
+        endpoint = f"https://safebrowsing.googleapis.com/v4/threatMatches:find?key={GOOGLE_API_KEY}"
         payload = {
             "client": {
                 "clientId": "verificador-sites",
